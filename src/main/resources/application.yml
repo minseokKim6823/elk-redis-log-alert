@@ -40,6 +40,8 @@ logging:
     org.springframework: INFO
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    path: logs
 
 # Custom Application Properties
 app:
@@ -48,3 +50,15 @@ app:
     worker:
       enabled: true
       poll-interval-ms: 1000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}

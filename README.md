@@ -244,3 +244,10 @@ Spring Boot ì‹¤í–‰ í›„ ë‹¤ìŒ URLì—ì„œ API ë¬¸ì„œë¥¼ í™•ì¸í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤
 4. **POST /api/logs/pattern** - íŒ¨í„´ ê¸°ë°˜ ë¡œê·¸ ìƒì„±
    - íŒŒë¼ë¯¸í„°: pattern
    - ì•Œë¦¼ ê·œì¹™ í…ŒìŠ¤íŠ¸ìš©
+## Prometheus / Grafana / Loki
+
+- Prometheus: http://localhost:9090 (Spring Boot ¸ŞÆ®¸¯ `/actuator/prometheus` ½ºÅ©·¦). Grafana µ¥ÀÌÅÍ ¼Ò½º URLÀº `http://prometheus:9090`.
+- Grafana: http://localhost:3000 (±âº» `admin/admin`). Prometheus¿Í Loki¸¦ µ¥ÀÌÅÍ ¼Ò½º·Î Ãß°¡ ÈÄ ¿øÇÏ´Â ´ë½Ãº¸µå/·Î±× ÆĞ³Î »ı¼º.
+- Loki: http://localhost:3100 (`http://loki:3100`À¸·Î Grafana ³»ºÎ ¿¬°á). ±âº» ·Î±× ¶óº§ `{job="spring-app", app="elk-alert-system"}`.
+- Promtail: È£½ºÆ® `./logs` µğ·ºÅÍ¸®¸¦ `/var/log/app`À¸·Î ¸¶¿îÆ®ÇÏ¿© RollingFileAppender ·Î±×(`logs/app.log`)¸¦ Loki·Î Àü¼Û.
+- Spring Boot ¸ŞÆ®¸¯ ¿£µåÆ÷ÀÎÆ®: http://localhost:8080/actuator/prometheus
