@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubetest
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /()(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: vue002ser
+                port:
+                  number: 8000
+          - path: /boot(/|$)(/*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: boot002ser
+                port:
+                  number: 8001

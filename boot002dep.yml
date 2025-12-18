@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boot002dep
+spec:
+  selector:
+    matchLabels:
+      app: boot002kube
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: boot002kube
+    spec:
+      containers:
+      - name: boot-container
+        image: ms6823/k8s_b_ing:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
